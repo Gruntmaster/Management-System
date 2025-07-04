@@ -35,7 +35,7 @@
             label4 = new Label();
             panel1 = new Panel();
             label2 = new Label();
-            textBox1 = new TextBox();
+            DepartNameTb = new TextBox();
             label3 = new Label();
             label1 = new Label();
             btnUpdateToDepartment = new Button();
@@ -110,12 +110,12 @@
             label2.TabIndex = 0;
             label2.Text = "Employee Management System";
             // 
-            // textBox1
+            // DepartNameTb
             // 
-            textBox1.Location = new Point(12, 274);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(221, 29);
-            textBox1.TabIndex = 28;
+            DepartNameTb.Location = new Point(12, 274);
+            DepartNameTb.Name = "DepartNameTb";
+            DepartNameTb.Size = new Size(221, 29);
+            DepartNameTb.TabIndex = 28;
             // 
             // label3
             // 
@@ -222,7 +222,7 @@
             Controls.Add(panel2);
             Controls.Add(label4);
             Controls.Add(panel1);
-            Controls.Add(textBox1);
+            Controls.Add(DepartNameTb);
             Controls.Add(label3);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
             FormBorderStyle = FormBorderStyle.None;
@@ -246,7 +246,7 @@
         private Label label4;
         private Panel panel1;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox DepartNameTb;
         private Label label3;
         private Label label1;
         private Button btnUpdateToDepartment;
