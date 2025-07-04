@@ -29,7 +29,7 @@ namespace Management_System
         {
             try
             {
-                if(DepartNameTb.Text == "")
+                if (DepartNameTb.Text == "")
                 {
                     MessageBox.Show("Department Name is required");
                 }
@@ -37,7 +37,7 @@ namespace Management_System
                 {
                     string departmentName = DepartNameTb.Text;
                     string query = "INSERT INTO DepartmentTbl VALUES ('{0}')";
-                    query = string.Format(DepartNameTb.Text, departmentName); // Fixing the string formatting
+                    query = string.Format(query, DepartNameTb.Text); // Fixing the string formatting
                     connectionFunc.SetData(query);
                     Departments_Load();
                     MessageBox.Show("Department Added Successfully");
@@ -48,6 +48,25 @@ namespace Management_System
             {
 
                 MessageBox.Show(Ex.Message);
+            }
+        }
+
+        int Key = 0; // Variable to store the selected department ID
+        private void DepList_CellContentClick(object sender, DataGridViewCellEventArgs index)
+        {
+            if (index.RowIndex >= 0) // Ensure a valid row index
+            {
+                DataGridViewRow row = DepList.Rows[index.RowIndex];
+                DepartNameTb.Text = row.Cells[1].Value.ToString(); // Assuming the second column is the department name
+
+                if (DepartNameTb.Text == "")
+                {
+                    Key = 0;
+                }
+                else
+                {
+                    Key = Convert.ToInt32(row.Cells[0].Value); // Assuming the first column is the department ID
+                }
             }
         }
     }

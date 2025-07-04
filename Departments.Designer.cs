@@ -51,12 +51,15 @@
             // 
             // DepList
             // 
+            DepList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             DepList.BackgroundColor = SystemColors.ButtonFace;
             DepList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DepList.Location = new Point(322, 209);
             DepList.Name = "DepList";
+            DepList.ReadOnly = true;
             DepList.Size = new Size(812, 378);
             DepList.TabIndex = 44;
+            DepList.CellContentClick += DepList_CellContentClick;
             // 
             // pictureBox1
             // 
