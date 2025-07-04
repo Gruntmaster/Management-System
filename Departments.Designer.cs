@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Departments));
-            dataGridViewDepList = new DataGridView();
+            DepList = new DataGridView();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             label4 = new Label();
@@ -44,19 +44,19 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDepList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DepList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridViewDepList
+            // DepList
             // 
-            dataGridViewDepList.BackgroundColor = SystemColors.ButtonFace;
-            dataGridViewDepList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDepList.Location = new Point(322, 209);
-            dataGridViewDepList.Name = "dataGridViewDepList";
-            dataGridViewDepList.Size = new Size(812, 378);
-            dataGridViewDepList.TabIndex = 44;
+            DepList.BackgroundColor = SystemColors.ButtonFace;
+            DepList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DepList.Location = new Point(322, 209);
+            DepList.Name = "DepList";
+            DepList.Size = new Size(812, 378);
+            DepList.TabIndex = 44;
             // 
             // pictureBox1
             // 
@@ -155,6 +155,7 @@
             btnAddToDepartment.TabIndex = 46;
             btnAddToDepartment.Text = "Add";
             btnAddToDepartment.UseVisualStyleBackColor = true;
+            btnAddToDepartment.Click += btnAddToDepartment_Click;
             // 
             // label5
             // 
@@ -217,7 +218,7 @@
             Controls.Add(btnUpdateToDepartment);
             Controls.Add(btnAddToDepartment);
             Controls.Add(label1);
-            Controls.Add(dataGridViewDepList);
+            Controls.Add(DepList);
             Controls.Add(pictureBox1);
             Controls.Add(panel2);
             Controls.Add(label4);
@@ -230,7 +231,7 @@
             Name = "Departments";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Departments";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDepList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DepList).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -240,7 +241,7 @@
 
         #endregion
 
-        private DataGridView dataGridViewDepList;
+        private DataGridView DepList;
         private PictureBox pictureBox1;
         private Panel panel2;
         private Label label4;
