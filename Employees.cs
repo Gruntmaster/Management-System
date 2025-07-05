@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -139,9 +140,27 @@ namespace Management_System
         }
 
         int Key = 0;
-        private void EmployeeList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void EmployeeList_CellContentClick(object sender, DataGridViewCellEventArgs index)
         {
+            if (index.RowIndex >= 0) // Ensure a valid row index
+            {
+                DataGridViewRow row = EmployeeList.Rows[index.RowIndex];
+                EmployeeNameTb.Text = row.Cells[1].Value.ToString(); // Assuming the second column is the department name
+                EmployeeGenderCb.Text = row.Cells[2].Value.ToString();
+                EmployeeDepartmentCb.SelectedValue = row.Cells[3].Value.ToString(); // Assuming the third column is the department ID
+                EmployeeDateBirthTp.Value = Convert.ToDateTime(row.Cells[4].Value); // Assuming the fourth column is the date of birth
+                EmployeeJoinDateTp.Value = Convert.ToDateTime(row.Cells[5].Value); // Assuming the fifth column is the join date
+                EmployeeSalaryTb.Text = row.Cells[6].Value.ToString(); // Assuming the sixth column is the salary
 
+                if (EmployeeNameTb.Text == "")
+                {
+                    Key = 0;
+                }
+                else
+                {
+                    Key = Convert.ToInt32(row.Cells[0].Value); // Assuming the first column is the department ID
+                }
+            }
         }
     }
 }
