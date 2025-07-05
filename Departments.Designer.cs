@@ -40,7 +40,7 @@
             label1 = new Label();
             btnUpdateToDepartment = new Button();
             btnAddToDepartment = new Button();
-            label5 = new Label();
+            EmpLbl = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
@@ -165,17 +165,18 @@
             btnAddToDepartment.UseVisualStyleBackColor = false;
             btnAddToDepartment.Click += btnAddToDepartment_Click;
             // 
-            // label5
+            // EmpLbl
             // 
-            label5.AutoSize = true;
-            label5.BackColor = SystemColors.ButtonFace;
-            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label5.ForeColor = SystemColors.ActiveCaption;
-            label5.Location = new Point(434, 112);
-            label5.Name = "label5";
-            label5.Size = new Size(75, 19);
-            label5.TabIndex = 48;
-            label5.Text = "Employee";
+            EmpLbl.AutoSize = true;
+            EmpLbl.BackColor = SystemColors.ButtonFace;
+            EmpLbl.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            EmpLbl.ForeColor = SystemColors.ActiveCaption;
+            EmpLbl.Location = new Point(434, 112);
+            EmpLbl.Name = "EmpLbl";
+            EmpLbl.Size = new Size(75, 19);
+            EmpLbl.TabIndex = 48;
+            EmpLbl.Text = "Employee";
+            EmpLbl.Click += EmpLbl_Click;
             // 
             // label6
             // 
@@ -234,7 +235,7 @@
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(label5);
+            Controls.Add(EmpLbl);
             Controls.Add(btnUpdateToDepartment);
             Controls.Add(btnAddToDepartment);
             Controls.Add(label1);
@@ -272,7 +273,7 @@
         private Label label1;
         private Button btnUpdateToDepartment;
         private Button btnAddToDepartment;
-        private Label label5;
+        private Label EmpLbl;
         private Label label6;
         private Label label7;
         private Label label8;

@@ -121,5 +121,12 @@ namespace Management_System
                 MessageBox.Show(Ex.Message);
             }
         }
+
+        private void EmpLbl_Click(object sender, EventArgs e)
+        {
+            Employees empForm = new Employees();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
     }
 }

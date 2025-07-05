@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employees));
-            textBox1 = new TextBox();
+            EmployeeNameTb = new TextBox();
             label3 = new Label();
             label1 = new Label();
             panel1 = new Panel();
@@ -37,33 +37,33 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            textBox5 = new TextBox();
+            EmployeeSalaryTb = new TextBox();
             label7 = new Label();
             label8 = new Label();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
-            btnAddToSystem = new Button();
-            btnUpdateToSystem = new Button();
-            dataGridViewEmployee = new DataGridView();
+            EmployeeGenderCb = new ComboBox();
+            EmployeeDepartmentCb = new ComboBox();
+            EmployeeDateBirthTp = new DateTimePicker();
+            EmployeeJoinDateTp = new DateTimePicker();
+            btnAddToEmployee = new Button();
+            btnUpdateToEmployee = new Button();
+            EmployeeList = new DataGridView();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployee).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)EmployeeList).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // EmployeeNameTb
             // 
-            textBox1.Location = new Point(12, 212);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(221, 23);
-            textBox1.TabIndex = 5;
+            EmployeeNameTb.Location = new Point(12, 212);
+            EmployeeNameTb.Name = "EmployeeNameTb";
+            EmployeeNameTb.Size = new Size(221, 23);
+            EmployeeNameTb.TabIndex = 5;
             // 
             // label3
             // 
@@ -143,12 +143,12 @@
             label6.TabIndex = 9;
             label6.Text = "Employee Department";
             // 
-            // textBox5
+            // EmployeeSalaryTb
             // 
-            textBox5.Location = new Point(12, 537);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(221, 23);
-            textBox5.TabIndex = 16;
+            EmployeeSalaryTb.Location = new Point(12, 537);
+            EmployeeSalaryTb.Name = "EmployeeSalaryTb";
+            EmployeeSalaryTb.Size = new Size(221, 23);
+            EmployeeSalaryTb.TabIndex = 16;
             // 
             // label7
             // 
@@ -190,65 +190,68 @@
             pictureBox1.TabIndex = 18;
             pictureBox1.TabStop = false;
             // 
-            // comboBox1
+            // EmployeeGenderCb
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Male", "Female" });
-            comboBox1.Location = new Point(13, 281);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(220, 23);
-            comboBox1.TabIndex = 19;
+            EmployeeGenderCb.FormattingEnabled = true;
+            EmployeeGenderCb.Items.AddRange(new object[] { "Male", "Female" });
+            EmployeeGenderCb.Location = new Point(13, 281);
+            EmployeeGenderCb.Name = "EmployeeGenderCb";
+            EmployeeGenderCb.Size = new Size(220, 23);
+            EmployeeGenderCb.TabIndex = 19;
             // 
-            // comboBox2
+            // EmployeeDepartmentCb
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(13, 356);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(220, 23);
-            comboBox2.TabIndex = 20;
+            EmployeeDepartmentCb.FormattingEnabled = true;
+            EmployeeDepartmentCb.Location = new Point(13, 356);
+            EmployeeDepartmentCb.Name = "EmployeeDepartmentCb";
+            EmployeeDepartmentCb.Size = new Size(220, 23);
+            EmployeeDepartmentCb.TabIndex = 20;
             // 
-            // dateTimePicker1
+            // EmployeeDateBirthTp
             // 
-            dateTimePicker1.CalendarMonthBackground = SystemColors.GradientActiveCaption;
-            dateTimePicker1.Location = new Point(13, 420);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(220, 23);
-            dateTimePicker1.TabIndex = 21;
+            EmployeeDateBirthTp.CalendarMonthBackground = SystemColors.GradientActiveCaption;
+            EmployeeDateBirthTp.Location = new Point(13, 420);
+            EmployeeDateBirthTp.Name = "EmployeeDateBirthTp";
+            EmployeeDateBirthTp.Size = new Size(220, 23);
+            EmployeeDateBirthTp.TabIndex = 21;
             // 
-            // dateTimePicker2
+            // EmployeeJoinDateTp
             // 
-            dateTimePicker2.CalendarMonthBackground = SystemColors.GradientActiveCaption;
-            dateTimePicker2.Location = new Point(12, 483);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(221, 23);
-            dateTimePicker2.TabIndex = 22;
+            EmployeeJoinDateTp.CalendarMonthBackground = SystemColors.GradientActiveCaption;
+            EmployeeJoinDateTp.Location = new Point(12, 483);
+            EmployeeJoinDateTp.Name = "EmployeeJoinDateTp";
+            EmployeeJoinDateTp.Size = new Size(221, 23);
+            EmployeeJoinDateTp.TabIndex = 22;
             // 
-            // btnAddToSystem
+            // btnAddToEmployee
             // 
-            btnAddToSystem.Location = new Point(13, 566);
-            btnAddToSystem.Name = "btnAddToSystem";
-            btnAddToSystem.Size = new Size(81, 34);
-            btnAddToSystem.TabIndex = 23;
-            btnAddToSystem.Text = "Add";
-            btnAddToSystem.UseVisualStyleBackColor = true;
+            btnAddToEmployee.BackColor = SystemColors.ActiveCaption;
+            btnAddToEmployee.Location = new Point(13, 566);
+            btnAddToEmployee.Name = "btnAddToEmployee";
+            btnAddToEmployee.Size = new Size(81, 34);
+            btnAddToEmployee.TabIndex = 23;
+            btnAddToEmployee.Text = "Add";
+            btnAddToEmployee.UseVisualStyleBackColor = false;
+            btnAddToEmployee.Click += btnAddToEmployee_Click;
             // 
-            // btnUpdateToSystem
+            // btnUpdateToEmployee
             // 
-            btnUpdateToSystem.Location = new Point(152, 566);
-            btnUpdateToSystem.Name = "btnUpdateToSystem";
-            btnUpdateToSystem.Size = new Size(81, 34);
-            btnUpdateToSystem.TabIndex = 24;
-            btnUpdateToSystem.Text = "Update";
-            btnUpdateToSystem.UseVisualStyleBackColor = true;
+            btnUpdateToEmployee.BackColor = SystemColors.ActiveBorder;
+            btnUpdateToEmployee.Location = new Point(152, 566);
+            btnUpdateToEmployee.Name = "btnUpdateToEmployee";
+            btnUpdateToEmployee.Size = new Size(81, 34);
+            btnUpdateToEmployee.TabIndex = 24;
+            btnUpdateToEmployee.Text = "Update";
+            btnUpdateToEmployee.UseVisualStyleBackColor = false;
             // 
-            // dataGridViewEmployee
+            // EmployeeList
             // 
-            dataGridViewEmployee.BackgroundColor = SystemColors.ButtonFace;
-            dataGridViewEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewEmployee.Location = new Point(290, 212);
-            dataGridViewEmployee.Name = "dataGridViewEmployee";
-            dataGridViewEmployee.Size = new Size(812, 378);
-            dataGridViewEmployee.TabIndex = 25;
+            EmployeeList.BackgroundColor = SystemColors.ButtonFace;
+            EmployeeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            EmployeeList.Location = new Point(290, 212);
+            EmployeeList.Name = "EmployeeList";
+            EmployeeList.Size = new Size(812, 378);
+            EmployeeList.TabIndex = 25;
             // 
             // label9
             // 
@@ -300,6 +303,7 @@
             // 
             // Employees
             // 
+            AccessibleName = "";
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1146, 616);
@@ -307,16 +311,16 @@
             Controls.Add(label10);
             Controls.Add(label11);
             Controls.Add(label12);
-            Controls.Add(dataGridViewEmployee);
-            Controls.Add(btnUpdateToSystem);
-            Controls.Add(btnAddToSystem);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(EmployeeList);
+            Controls.Add(btnUpdateToEmployee);
+            Controls.Add(btnAddToEmployee);
+            Controls.Add(EmployeeJoinDateTp);
+            Controls.Add(EmployeeDateBirthTp);
+            Controls.Add(EmployeeDepartmentCb);
+            Controls.Add(EmployeeGenderCb);
             Controls.Add(pictureBox1);
             Controls.Add(panel2);
-            Controls.Add(textBox5);
+            Controls.Add(EmployeeSalaryTb);
             Controls.Add(label7);
             Controls.Add(label8);
             Controls.Add(label5);
@@ -324,7 +328,7 @@
             Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(EmployeeNameTb);
             Controls.Add(label3);
             Name = "Employees";
             StartPosition = FormStartPosition.CenterScreen;
@@ -332,14 +336,14 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)EmployeeList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox EmployeeNameTb;
         private Label label3;
         private Label label1;
         private Panel panel1;
@@ -347,18 +351,18 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox5;
+        private TextBox EmployeeSalaryTb;
         private Label label7;
         private Label label8;
         private Panel panel2;
         private PictureBox pictureBox1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
-        private Button btnAddToSystem;
-        private Button btnUpdateToSystem;
-        private DataGridView dataGridViewEmployee;
+        private ComboBox EmployeeGenderCb;
+        private ComboBox EmployeeDepartmentCb;
+        private DateTimePicker EmployeeDateBirthTp;
+        private DateTimePicker EmployeeJoinDateTp;
+        private Button btnAddToEmployee;
+        private Button btnUpdateToEmployee;
+        private DataGridView EmployeeList;
         private Label label9;
         private Label label10;
         private Label label11;
