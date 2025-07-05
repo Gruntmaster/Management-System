@@ -37,7 +37,7 @@ namespace Management_System
                 {
                     string departmentName = DepartNameTb.Text;
                     string query = "INSERT INTO DepartmentTbl VALUES ('{0}')";
-                    query = string.Format(query, DepartNameTb.Text); // Fixing the string formatting
+                    query = string.Format(query, departmentName); // Fixing the string formatting
                     connectionFunc.SetData(query);
                     Departments_Load();
                     MessageBox.Show("Department Added Successfully");
@@ -82,7 +82,7 @@ namespace Management_System
                 {
                     string departmentName = DepartNameTb.Text;
                     string query = "UPDATE DepartmentTbl set DepName = '{0}' WHERE DepId = {1}";
-                    query = string.Format(query, DepartNameTb.Text, Key); // Fixing the string formatting
+                    query = string.Format(query, departmentName, Key); // Fixing the string formatting
                     connectionFunc.SetData(query);
                     Departments_Load();
                     MessageBox.Show("Department Updated Successfully");
@@ -106,7 +106,6 @@ namespace Management_System
                 }
                 else
                 {
-                    string departmentName = DepartNameTb.Text;
                     string query = "DELETE FROM DepartmentTbl WHERE DepId = {0}";
                     query = string.Format(query, Key); // Fixing the string formatting
                     connectionFunc.SetData(query);

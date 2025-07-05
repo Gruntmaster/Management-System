@@ -53,6 +53,7 @@
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
+            btnDeleteToEmployee = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EmployeeList).BeginInit();
@@ -60,7 +61,7 @@
             // 
             // EmployeeNameTb
             // 
-            EmployeeNameTb.Location = new Point(12, 212);
+            EmployeeNameTb.Location = new Point(22, 212);
             EmployeeNameTb.Name = "EmployeeNameTb";
             EmployeeNameTb.Size = new Size(221, 23);
             EmployeeNameTb.TabIndex = 5;
@@ -70,7 +71,7 @@
             label3.AutoSize = true;
             label3.BackColor = SystemColors.ButtonFace;
             label3.ForeColor = SystemColors.ActiveCaption;
-            label3.Location = new Point(12, 179);
+            label3.Location = new Point(22, 179);
             label3.Name = "label3";
             label3.Size = new Size(94, 15);
             label3.TabIndex = 4;
@@ -81,7 +82,7 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ButtonFace;
             label1.ForeColor = SystemColors.ActiveCaption;
-            label1.Location = new Point(12, 251);
+            label1.Location = new Point(22, 251);
             label1.Name = "label1";
             label1.Size = new Size(100, 15);
             label1.TabIndex = 6;
@@ -126,7 +127,7 @@
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonFace;
             label5.ForeColor = SystemColors.ActiveCaption;
-            label5.Location = new Point(13, 392);
+            label5.Location = new Point(23, 392);
             label5.Name = "label5";
             label5.Size = new Size(73, 15);
             label5.TabIndex = 11;
@@ -137,7 +138,7 @@
             label6.AutoSize = true;
             label6.BackColor = SystemColors.ButtonFace;
             label6.ForeColor = SystemColors.ActiveCaption;
-            label6.Location = new Point(12, 320);
+            label6.Location = new Point(22, 320);
             label6.Name = "label6";
             label6.Size = new Size(125, 15);
             label6.TabIndex = 9;
@@ -145,7 +146,7 @@
             // 
             // EmployeeSalaryTb
             // 
-            EmployeeSalaryTb.Location = new Point(12, 537);
+            EmployeeSalaryTb.Location = new Point(22, 537);
             EmployeeSalaryTb.Name = "EmployeeSalaryTb";
             EmployeeSalaryTb.Size = new Size(221, 23);
             EmployeeSalaryTb.TabIndex = 16;
@@ -155,7 +156,7 @@
             label7.AutoSize = true;
             label7.BackColor = SystemColors.ButtonFace;
             label7.ForeColor = SystemColors.ActiveCaption;
-            label7.Location = new Point(12, 519);
+            label7.Location = new Point(22, 519);
             label7.Name = "label7";
             label7.Size = new Size(122, 15);
             label7.TabIndex = 15;
@@ -166,7 +167,7 @@
             label8.AutoSize = true;
             label8.BackColor = SystemColors.ButtonFace;
             label8.ForeColor = SystemColors.ActiveCaption;
-            label8.Location = new Point(12, 456);
+            label8.Location = new Point(22, 456);
             label8.Name = "label8";
             label8.Size = new Size(55, 15);
             label8.TabIndex = 13;
@@ -184,7 +185,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(124, 113);
+            pictureBox1.Location = new Point(134, 113);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 81);
             pictureBox1.TabIndex = 18;
@@ -194,7 +195,7 @@
             // 
             EmployeeGenderCb.FormattingEnabled = true;
             EmployeeGenderCb.Items.AddRange(new object[] { "Male", "Female" });
-            EmployeeGenderCb.Location = new Point(13, 281);
+            EmployeeGenderCb.Location = new Point(23, 281);
             EmployeeGenderCb.Name = "EmployeeGenderCb";
             EmployeeGenderCb.Size = new Size(220, 23);
             EmployeeGenderCb.TabIndex = 19;
@@ -202,7 +203,7 @@
             // EmployeeDepartmentCb
             // 
             EmployeeDepartmentCb.FormattingEnabled = true;
-            EmployeeDepartmentCb.Location = new Point(13, 356);
+            EmployeeDepartmentCb.Location = new Point(23, 356);
             EmployeeDepartmentCb.Name = "EmployeeDepartmentCb";
             EmployeeDepartmentCb.Size = new Size(220, 23);
             EmployeeDepartmentCb.TabIndex = 20;
@@ -210,7 +211,8 @@
             // EmployeeDateBirthTp
             // 
             EmployeeDateBirthTp.CalendarMonthBackground = SystemColors.GradientActiveCaption;
-            EmployeeDateBirthTp.Location = new Point(13, 420);
+            EmployeeDateBirthTp.Format = DateTimePickerFormat.Short;
+            EmployeeDateBirthTp.Location = new Point(23, 420);
             EmployeeDateBirthTp.Name = "EmployeeDateBirthTp";
             EmployeeDateBirthTp.Size = new Size(220, 23);
             EmployeeDateBirthTp.TabIndex = 21;
@@ -218,7 +220,8 @@
             // EmployeeJoinDateTp
             // 
             EmployeeJoinDateTp.CalendarMonthBackground = SystemColors.GradientActiveCaption;
-            EmployeeJoinDateTp.Location = new Point(12, 483);
+            EmployeeJoinDateTp.Format = DateTimePickerFormat.Short;
+            EmployeeJoinDateTp.Location = new Point(22, 483);
             EmployeeJoinDateTp.Name = "EmployeeJoinDateTp";
             EmployeeJoinDateTp.Size = new Size(221, 23);
             EmployeeJoinDateTp.TabIndex = 22;
@@ -226,7 +229,7 @@
             // btnAddToEmployee
             // 
             btnAddToEmployee.BackColor = SystemColors.ActiveCaption;
-            btnAddToEmployee.Location = new Point(13, 566);
+            btnAddToEmployee.Location = new Point(5, 566);
             btnAddToEmployee.Name = "btnAddToEmployee";
             btnAddToEmployee.Size = new Size(81, 34);
             btnAddToEmployee.TabIndex = 23;
@@ -237,7 +240,7 @@
             // btnUpdateToEmployee
             // 
             btnUpdateToEmployee.BackColor = SystemColors.ActiveBorder;
-            btnUpdateToEmployee.Location = new Point(152, 566);
+            btnUpdateToEmployee.Location = new Point(92, 566);
             btnUpdateToEmployee.Name = "btnUpdateToEmployee";
             btnUpdateToEmployee.Size = new Size(81, 34);
             btnUpdateToEmployee.TabIndex = 24;
@@ -301,12 +304,24 @@
             label12.TabIndex = 52;
             label12.Text = "Employee";
             // 
+            // btnDeleteToEmployee
+            // 
+            btnDeleteToEmployee.BackColor = SystemColors.GradientActiveCaption;
+            btnDeleteToEmployee.Location = new Point(179, 566);
+            btnDeleteToEmployee.Name = "btnDeleteToEmployee";
+            btnDeleteToEmployee.Size = new Size(81, 34);
+            btnDeleteToEmployee.TabIndex = 56;
+            btnDeleteToEmployee.Text = "Delete";
+            btnDeleteToEmployee.UseVisualStyleBackColor = false;
+            btnDeleteToEmployee.Click += btnDeleteToEmployee_Click;
+            // 
             // Employees
             // 
             AccessibleName = "";
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1146, 616);
+            Controls.Add(btnDeleteToEmployee);
             Controls.Add(label9);
             Controls.Add(label10);
             Controls.Add(label11);
@@ -367,5 +382,6 @@
         private Label label10;
         private Label label11;
         private Label label12;
+        private Button btnDeleteToEmployee;
     }
 }
