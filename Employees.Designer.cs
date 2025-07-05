@@ -246,6 +246,7 @@
             btnUpdateToEmployee.TabIndex = 24;
             btnUpdateToEmployee.Text = "Update";
             btnUpdateToEmployee.UseVisualStyleBackColor = false;
+            btnUpdateToEmployee.Click += btnUpdateToEmployee_Click;
             // 
             // EmployeeList
             // 
@@ -255,6 +256,7 @@
             EmployeeList.Name = "EmployeeList";
             EmployeeList.Size = new Size(812, 378);
             EmployeeList.TabIndex = 25;
+            EmployeeList.CellContentClick += EmployeeList_CellContentClick;
             // 
             // label9
             // 
