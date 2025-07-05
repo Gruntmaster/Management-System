@@ -44,6 +44,7 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
+            btnDeleteToDepartment = new Button();
             ((System.ComponentModel.ISupportInitialize)DepList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -64,7 +65,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(172, 168);
+            pictureBox1.Location = new Point(151, 187);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 81);
             pictureBox1.TabIndex = 37;
@@ -124,10 +125,11 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = SystemColors.ButtonFace;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
             label3.ForeColor = SystemColors.ActiveCaption;
             label3.Location = new Point(12, 237);
             label3.Name = "label3";
-            label3.Size = new Size(124, 21);
+            label3.Size = new Size(136, 21);
             label3.TabIndex = 27;
             label3.Text = "Employee Name";
             // 
@@ -143,21 +145,24 @@
             // 
             // btnUpdateToDepartment
             // 
+            btnUpdateToDepartment.BackColor = SystemColors.ActiveBorder;
             btnUpdateToDepartment.Location = new Point(151, 321);
             btnUpdateToDepartment.Name = "btnUpdateToDepartment";
             btnUpdateToDepartment.Size = new Size(81, 34);
             btnUpdateToDepartment.TabIndex = 47;
             btnUpdateToDepartment.Text = "Update";
-            btnUpdateToDepartment.UseVisualStyleBackColor = true;
+            btnUpdateToDepartment.UseVisualStyleBackColor = false;
+            btnUpdateToDepartment.Click += btnUpdateToDepartment_Click;
             // 
             // btnAddToDepartment
             // 
+            btnAddToDepartment.BackColor = SystemColors.ActiveCaption;
             btnAddToDepartment.Location = new Point(12, 321);
             btnAddToDepartment.Name = "btnAddToDepartment";
             btnAddToDepartment.Size = new Size(81, 34);
             btnAddToDepartment.TabIndex = 46;
             btnAddToDepartment.Text = "Add";
-            btnAddToDepartment.UseVisualStyleBackColor = true;
+            btnAddToDepartment.UseVisualStyleBackColor = false;
             btnAddToDepartment.Click += btnAddToDepartment_Click;
             // 
             // label5
@@ -208,12 +213,24 @@
             label8.TabIndex = 51;
             label8.Text = "Logout";
             // 
+            // btnDeleteToDepartment
+            // 
+            btnDeleteToDepartment.BackColor = SystemColors.GradientInactiveCaption;
+            btnDeleteToDepartment.Location = new Point(81, 361);
+            btnDeleteToDepartment.Name = "btnDeleteToDepartment";
+            btnDeleteToDepartment.Size = new Size(81, 34);
+            btnDeleteToDepartment.TabIndex = 52;
+            btnDeleteToDepartment.Text = "Delete";
+            btnDeleteToDepartment.UseVisualStyleBackColor = false;
+            btnDeleteToDepartment.Click += btnDeleteToDepartment_Click;
+            // 
             // Departments
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(1180, 630);
+            Controls.Add(btnDeleteToDepartment);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -259,5 +276,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
+        private Button btnDeleteToDepartment;
     }
 }

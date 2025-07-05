@@ -69,5 +69,57 @@ namespace Management_System
                 }
             }
         }
+
+        private void btnUpdateToDepartment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DepartNameTb.Text == "")
+                {
+                    MessageBox.Show("Department Name is required");
+                }
+                else
+                {
+                    string departmentName = DepartNameTb.Text;
+                    string query = "UPDATE DepartmentTbl set DepName = '{0}' WHERE DepId = {1}";
+                    query = string.Format(query, DepartNameTb.Text, Key); // Fixing the string formatting
+                    connectionFunc.SetData(query);
+                    Departments_Load();
+                    MessageBox.Show("Department Updated Successfully");
+                    DepartNameTb.Text = ""; // Clear the input field after adding
+                }
+            }
+            catch (Exception Ex)
+            {
+
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        private void btnDeleteToDepartment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DepartNameTb.Text == "")
+                {
+                    MessageBox.Show("Department Name is required");
+                }
+                else
+                {
+                    string departmentName = DepartNameTb.Text;
+                    string query = "DELETE FROM DepartmentTbl WHERE DepId = {0}";
+                    query = string.Format(query, Key); // Fixing the string formatting
+                    connectionFunc.SetData(query);
+                    Departments_Load();
+                    MessageBox.Show("Department Deleted Successfully");
+                    DepartNameTb.Text = ""; // Clear the input field after adding
+                }
+            }
+            catch (Exception Ex)
+            {
+
+                MessageBox.Show(Ex.Message);
+            }
+        }
     }
 }
