@@ -134,5 +134,19 @@ namespace Management_System
             salaries.Show();
             this.Hide();
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Departments empForm = new Departments();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
     }
 }

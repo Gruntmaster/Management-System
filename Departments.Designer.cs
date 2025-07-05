@@ -202,6 +202,7 @@
             label7.Size = new Size(95, 19);
             label7.TabIndex = 50;
             label7.Text = "Departments";
+            label7.Click += label7_Click;
             // 
             // label8
             // 
@@ -214,6 +215,7 @@
             label8.Size = new Size(56, 19);
             label8.TabIndex = 51;
             label8.Text = "Logout";
+            label8.Click += label8_Click;
             // 
             // btnDeleteToDepartment
             // 

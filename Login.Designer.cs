@@ -1,6 +1,6 @@
 ﻿namespace Management_System
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -36,13 +36,16 @@
             tbPassword = new TextBox();
             pictureBox1 = new PictureBox();
             btnLogin = new Button();
+            resetLbl = new Label();
             label1 = new Label();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(label1);
             panel1.Location = new Point(4, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(255, 447);
@@ -87,6 +90,7 @@
             // 
             tbPassword.Location = new Point(295, 250);
             tbPassword.Name = "tbPassword";
+            tbPassword.PasswordChar = 'X';
             tbPassword.Size = new Size(219, 23);
             tbPassword.TabIndex = 5;
             // 
@@ -109,24 +113,36 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
+            // resetLbl
+            // 
+            resetLbl.AutoSize = true;
+            resetLbl.BackColor = SystemColors.Control;
+            resetLbl.Font = new Font("Segoe UI", 10F, FontStyle.Underline);
+            resetLbl.ForeColor = SystemColors.WindowFrame;
+            resetLbl.Location = new Point(375, 371);
+            resetLbl.Name = "resetLbl";
+            resetLbl.Size = new Size(42, 19);
+            resetLbl.TabIndex = 8;
+            resetLbl.Text = "Reset";
+            resetLbl.Click += resetLbl_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.Control;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Underline);
-            label1.ForeColor = SystemColors.WindowFrame;
-            label1.Location = new Point(375, 371);
+            label1.Font = new Font("Segoe UI", 22F, FontStyle.Bold);
+            label1.ForeColor = SystemColors.ButtonFace;
+            label1.Location = new Point(19, 195);
             label1.Name = "label1";
-            label1.Size = new Size(42, 19);
-            label1.TabIndex = 8;
-            label1.Text = "Reset";
+            label1.Size = new Size(209, 41);
+            label1.TabIndex = 0;
+            label1.Text = "Employee MS";
             // 
-            // Form1
+            // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            Controls.Add(resetLbl);
             Controls.Add(btnLogin);
             Controls.Add(pictureBox1);
             Controls.Add(tbPassword);
@@ -135,8 +151,10 @@
             Controls.Add(labelUsername);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "Form1";
+            Name = "Login";
             Text = "Management System";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -152,6 +170,7 @@
         private TextBox tbPassword;
         private PictureBox pictureBox1;
         private Button btnLogin;
+        private Label resetLbl;
         private Label label1;
     }
 }

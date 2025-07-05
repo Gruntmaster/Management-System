@@ -28,7 +28,7 @@ namespace Management_System
             employeeNameCb.DataSource = connectionFunc.GetData(query);
         }
 
-        int Key = 0; // Variable to store the selected employee ID
+        int daysSalary = 0; // Variable to store the selected employee ID
         string period = ""; // Variable to store the selected period
         private void GetSalaries()
         {
@@ -36,7 +36,21 @@ namespace Management_System
             query = string.Format(query, employeeNameCb.SelectedValue.ToString());
             foreach (DataRow dataRow in connectionFunc.GetData(query).Rows)
             {
-                Key = Convert.ToInt32(dataRow["EmpSal"].ToString());
+                daysSalary = Convert.ToInt32(dataRow["EmpSal"].ToString());
+            }
+
+            if (daysAttendedTb.Text == "")
+            {
+                salaryTb.Text = "Rs " + (daysAttended * daysSalary); // Calculate salary based on days attended and employee's salary
+            }
+            else if (Convert.ToInt32(daysAttendedTb.Text) > 31)
+            {
+                MessageBox.Show("Days attended cannot be more than 31 days in a month.");
+            }
+            else
+            {
+                daysAttended = Convert.ToInt32(daysAttendedTb.Text);
+                salaryTb.Text = "Rs " + (daysAttended * daysSalary); // Calculate salary based on days attended and employee's salary
             }
         }
         private void ShowSalaries()
@@ -63,34 +77,63 @@ namespace Management_System
             GetSalaries();
         }
 
+        int daysAttended = 1; // Variable to store the number of days attended
         private void btnAddToSalary_Click(object sender, EventArgs e)
         {
             try
             {
-                if(employeeNameCb.SelectedIndex == -1 || periodTp.Text == "" || daysAttendedTb.Text == "")
+                if (employeeNameCb.SelectedIndex == -1 || periodTp.Text == "" || daysAttendedTb.Text == "")
                 {
                     MessageBox.Show("Please fill all fields");
                 }
                 else
                 {
                     period = periodTp.Value.Date.Month.ToString() + "-" + periodTp.Value.Date.Year.ToString();
-                    int amount = Key * Convert.ToInt32(daysAttendedTb.Text);
+                    int amount = daysSalary * Convert.ToInt32(daysAttendedTb.Text);
                     int daysAttended = Convert.ToInt32(daysAttendedTb.Text);
 
-                    string query = "INSERT INTO SalaryTbl VALUES ({0},{1},{2},'{3}',{4},'{5}')";
-                    query = string.Format(query, employeeNameCb.SelectedValue.ToString(), 
+                    string query = "INSERT INTO SalaryTbl VALUES ({0},{1},'{2}',{3},'{4}')";
+                    query = string.Format(query, employeeNameCb.SelectedValue.ToString(),
                         daysAttended, period, amount, DateTime.Today.Date);
                     connectionFunc.SetData(query);
                     ShowSalaries();
                     MessageBox.Show("Salary Paid!");
                     daysAttendedTb.Text = ""; // Clear the input field after adding
-                }               
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void LogoutLbl_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Employees empForm = new Employees();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Departments empForm = new Departments();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void SalaryLbl_Click(object sender, EventArgs e)
+        {
+            Salaries empForm = new Salaries();
+            empForm.Show();
+            this.Hide(); // Hide the current form
         }
     }
 }

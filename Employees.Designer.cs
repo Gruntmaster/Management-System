@@ -269,6 +269,7 @@
             label9.Size = new Size(56, 19);
             label9.TabIndex = 55;
             label9.Text = "Logout";
+            label9.Click += label9_Click;
             // 
             // label10
             // 
@@ -281,6 +282,7 @@
             label10.Size = new Size(95, 19);
             label10.TabIndex = 54;
             label10.Text = "Departments";
+            label10.Click += label10_Click;
             // 
             // label11
             // 
@@ -293,6 +295,7 @@
             label11.Size = new Size(52, 19);
             label11.TabIndex = 53;
             label11.Text = "Salary";
+            label11.Click += label11_Click;
             // 
             // label12
             // 
@@ -305,6 +308,7 @@
             label12.Size = new Size(75, 19);
             label12.TabIndex = 52;
             label12.Text = "Employee";
+            label12.Click += label12_Click;
             // 
             // btnDeleteToEmployee
             // 

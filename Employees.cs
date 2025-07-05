@@ -162,5 +162,33 @@ namespace Management_System
                 }
             }
         }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Employees empForm = new Employees();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Departments empForm = new Departments();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            Salaries empForm = new Salaries();
+            empForm.Show();
+            this.Hide(); // Hide the current form
+        }
     }
 }

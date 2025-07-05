@@ -43,7 +43,7 @@
             employeeNameCb = new ComboBox();
             daysAttendedTb = new TextBox();
             periodTp = new DateTimePicker();
-            label9 = new Label();
+            LogoutLbl = new Label();
             label10 = new Label();
             SalaryLbl = new Label();
             label12 = new Label();
@@ -194,17 +194,18 @@
             periodTp.Size = new Size(220, 29);
             periodTp.TabIndex = 46;
             // 
-            // label9
+            // LogoutLbl
             // 
-            label9.AutoSize = true;
-            label9.BackColor = SystemColors.ButtonFace;
-            label9.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
-            label9.ForeColor = SystemColors.ActiveCaption;
-            label9.Location = new Point(875, 113);
-            label9.Name = "label9";
-            label9.Size = new Size(56, 19);
-            label9.TabIndex = 59;
-            label9.Text = "Logout";
+            LogoutLbl.AutoSize = true;
+            LogoutLbl.BackColor = SystemColors.ButtonFace;
+            LogoutLbl.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline);
+            LogoutLbl.ForeColor = SystemColors.ActiveCaption;
+            LogoutLbl.Location = new Point(875, 113);
+            LogoutLbl.Name = "LogoutLbl";
+            LogoutLbl.Size = new Size(56, 19);
+            LogoutLbl.TabIndex = 59;
+            LogoutLbl.Text = "Logout";
+            LogoutLbl.Click += LogoutLbl_Click;
             // 
             // label10
             // 
@@ -217,6 +218,7 @@
             label10.Size = new Size(95, 19);
             label10.TabIndex = 58;
             label10.Text = "Departments";
+            label10.Click += label10_Click;
             // 
             // SalaryLbl
             // 
@@ -229,6 +231,7 @@
             SalaryLbl.Size = new Size(52, 19);
             SalaryLbl.TabIndex = 57;
             SalaryLbl.Text = "Salary";
+            SalaryLbl.Click += SalaryLbl_Click;
             // 
             // label12
             // 
@@ -241,13 +244,20 @@
             label12.Size = new Size(75, 19);
             label12.TabIndex = 56;
             label12.Text = "Employee";
+            label12.Click += label12_Click;
             // 
             // salaryTb
             // 
+            salaryTb.BackColor = SystemColors.ButtonFace;
+            salaryTb.BorderStyle = BorderStyle.None;
+            salaryTb.Enabled = false;
+            salaryTb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            salaryTb.ForeColor = SystemColors.ActiveCaption;
             salaryTb.Location = new Point(13, 426);
             salaryTb.Name = "salaryTb";
-            salaryTb.Size = new Size(221, 29);
+            salaryTb.Size = new Size(221, 22);
             salaryTb.TabIndex = 60;
+            salaryTb.TextAlign = HorizontalAlignment.Right;
             // 
             // Salaries
             // 
@@ -256,7 +266,7 @@
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(1184, 645);
             Controls.Add(salaryTb);
-            Controls.Add(label9);
+            Controls.Add(LogoutLbl);
             Controls.Add(label10);
             Controls.Add(SalaryLbl);
             Controls.Add(label12);
@@ -303,7 +313,7 @@
         private ComboBox employeeNameCb;
         private TextBox daysAttendedTb;
         private DateTimePicker periodTp;
-        private Label label9;
+        private Label LogoutLbl;
         private Label label10;
         private Label SalaryLbl;
         private Label label12;
