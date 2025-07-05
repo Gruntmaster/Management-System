@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Salaries));
             dataGridViewSalary = new DataGridView();
-            btnUpdateToSystem = new Button();
-            btnAddToSystem = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            btnUpdateToSalary = new Button();
+            btnAddToSalary = new Button();
             pictureBox1 = new PictureBox();
             label5 = new Label();
             label6 = new Label();
@@ -41,13 +40,14 @@
             label2 = new Label();
             label1 = new Label();
             label3 = new Label();
-            comboBox3 = new ComboBox();
-            textBox1 = new TextBox();
-            dateTimePicker3 = new DateTimePicker();
+            employeeNameCb = new ComboBox();
+            daysAttendedTb = new TextBox();
+            periodTp = new DateTimePicker();
             label9 = new Label();
             label10 = new Label();
-            label11 = new Label();
+            SalaryLbl = new Label();
             label12 = new Label();
+            salaryTb = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -61,32 +61,26 @@
             dataGridViewSalary.Name = "dataGridViewSalary";
             dataGridViewSalary.Size = new Size(812, 378);
             dataGridViewSalary.TabIndex = 43;
+            dataGridViewSalary.CellContentClick += dataGridViewSalary_CellContentClick;
             // 
-            // btnUpdateToSystem
+            // btnUpdateToSalary
             // 
-            btnUpdateToSystem.Location = new Point(152, 581);
-            btnUpdateToSystem.Name = "btnUpdateToSystem";
-            btnUpdateToSystem.Size = new Size(81, 34);
-            btnUpdateToSystem.TabIndex = 42;
-            btnUpdateToSystem.Text = "Update";
-            btnUpdateToSystem.UseVisualStyleBackColor = true;
+            btnUpdateToSalary.Location = new Point(152, 581);
+            btnUpdateToSalary.Name = "btnUpdateToSalary";
+            btnUpdateToSalary.Size = new Size(81, 34);
+            btnUpdateToSalary.TabIndex = 42;
+            btnUpdateToSalary.Text = "Update";
+            btnUpdateToSalary.UseVisualStyleBackColor = true;
             // 
-            // btnAddToSystem
+            // btnAddToSalary
             // 
-            btnAddToSystem.Location = new Point(13, 581);
-            btnAddToSystem.Name = "btnAddToSystem";
-            btnAddToSystem.Size = new Size(81, 34);
-            btnAddToSystem.TabIndex = 41;
-            btnAddToSystem.Text = "Add";
-            btnAddToSystem.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CalendarMonthBackground = SystemColors.GradientActiveCaption;
-            dateTimePicker1.Location = new Point(13, 435);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(220, 29);
-            dateTimePicker1.TabIndex = 39;
+            btnAddToSalary.Location = new Point(13, 581);
+            btnAddToSalary.Name = "btnAddToSalary";
+            btnAddToSalary.Size = new Size(81, 34);
+            btnAddToSalary.TabIndex = 41;
+            btnAddToSalary.Text = "Add";
+            btnAddToSalary.UseVisualStyleBackColor = true;
+            btnAddToSalary.Click += btnAddToSalary_Click;
             // 
             // pictureBox1
             // 
@@ -175,29 +169,30 @@
             label3.TabIndex = 27;
             label3.Text = "Employee";
             // 
-            // comboBox3
+            // employeeNameCb
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Male", "Female" });
-            comboBox3.Location = new Point(13, 224);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(220, 29);
-            comboBox3.TabIndex = 44;
+            employeeNameCb.FormattingEnabled = true;
+            employeeNameCb.Items.AddRange(new object[] { "Male", "Female" });
+            employeeNameCb.Location = new Point(13, 224);
+            employeeNameCb.Name = "employeeNameCb";
+            employeeNameCb.Size = new Size(220, 29);
+            employeeNameCb.TabIndex = 44;
+            employeeNameCb.SelectionChangeCommitted += employeeNameCb_SelectionChangeCommitted;
             // 
-            // textBox1
+            // daysAttendedTb
             // 
-            textBox1.Location = new Point(13, 290);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(221, 29);
-            textBox1.TabIndex = 45;
+            daysAttendedTb.Location = new Point(13, 290);
+            daysAttendedTb.Name = "daysAttendedTb";
+            daysAttendedTb.Size = new Size(221, 29);
+            daysAttendedTb.TabIndex = 45;
             // 
-            // dateTimePicker3
+            // periodTp
             // 
-            dateTimePicker3.CalendarMonthBackground = SystemColors.GradientActiveCaption;
-            dateTimePicker3.Location = new Point(14, 359);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(220, 29);
-            dateTimePicker3.TabIndex = 46;
+            periodTp.CalendarMonthBackground = SystemColors.GradientActiveCaption;
+            periodTp.Location = new Point(14, 359);
+            periodTp.Name = "periodTp";
+            periodTp.Size = new Size(220, 29);
+            periodTp.TabIndex = 46;
             // 
             // label9
             // 
@@ -223,17 +218,17 @@
             label10.TabIndex = 58;
             label10.Text = "Departments";
             // 
-            // label11
+            // SalaryLbl
             // 
-            label11.AutoSize = true;
-            label11.BackColor = SystemColors.ButtonFace;
-            label11.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label11.ForeColor = SystemColors.ActiveCaption;
-            label11.Location = new Point(694, 113);
-            label11.Name = "label11";
-            label11.Size = new Size(52, 19);
-            label11.TabIndex = 57;
-            label11.Text = "Salary";
+            SalaryLbl.AutoSize = true;
+            SalaryLbl.BackColor = SystemColors.ButtonFace;
+            SalaryLbl.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            SalaryLbl.ForeColor = SystemColors.ActiveCaption;
+            SalaryLbl.Location = new Point(694, 113);
+            SalaryLbl.Name = "SalaryLbl";
+            SalaryLbl.Size = new Size(52, 19);
+            SalaryLbl.TabIndex = 57;
+            SalaryLbl.Text = "Salary";
             // 
             // label12
             // 
@@ -247,23 +242,30 @@
             label12.TabIndex = 56;
             label12.Text = "Employee";
             // 
+            // salaryTb
+            // 
+            salaryTb.Location = new Point(13, 426);
+            salaryTb.Name = "salaryTb";
+            salaryTb.Size = new Size(221, 29);
+            salaryTb.TabIndex = 60;
+            // 
             // Salaries
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(1184, 645);
+            Controls.Add(salaryTb);
             Controls.Add(label9);
             Controls.Add(label10);
-            Controls.Add(label11);
+            Controls.Add(SalaryLbl);
             Controls.Add(label12);
-            Controls.Add(dateTimePicker3);
-            Controls.Add(textBox1);
-            Controls.Add(comboBox3);
+            Controls.Add(periodTp);
+            Controls.Add(daysAttendedTb);
+            Controls.Add(employeeNameCb);
             Controls.Add(dataGridViewSalary);
-            Controls.Add(btnUpdateToSystem);
-            Controls.Add(btnAddToSystem);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(btnUpdateToSalary);
+            Controls.Add(btnAddToSalary);
             Controls.Add(pictureBox1);
             Controls.Add(label5);
             Controls.Add(label6);
@@ -273,7 +275,7 @@
             Controls.Add(label3);
             Font = new Font("Segoe UI", 12F);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Salaries";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Salaries";
@@ -288,9 +290,8 @@
         #endregion
 
         private DataGridView dataGridViewSalary;
-        private Button btnUpdateToSystem;
-        private Button btnAddToSystem;
-        private DateTimePicker dateTimePicker1;
+        private Button btnUpdateToSalary;
+        private Button btnAddToSalary;
         private PictureBox pictureBox1;
         private Label label5;
         private Label label6;
@@ -299,12 +300,13 @@
         private Label label2;
         private Label label1;
         private Label label3;
-        private ComboBox comboBox3;
-        private TextBox textBox1;
-        private DateTimePicker dateTimePicker3;
+        private ComboBox employeeNameCb;
+        private TextBox daysAttendedTb;
+        private DateTimePicker periodTp;
         private Label label9;
         private Label label10;
-        private Label label11;
+        private Label SalaryLbl;
         private Label label12;
+        private TextBox salaryTb;
     }
 }

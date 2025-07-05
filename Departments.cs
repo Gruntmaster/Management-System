@@ -127,5 +127,12 @@ namespace Management_System
             empForm.Show();
             this.Hide(); // Hide the current form
         }
+
+        private void salaryLbl_Click(object sender, EventArgs e)
+        {
+            Salaries salaries = new Salaries();
+            salaries.Show();
+            this.Hide();
+        }
     }
 }

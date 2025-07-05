@@ -41,7 +41,7 @@
             btnUpdateToDepartment = new Button();
             btnAddToDepartment = new Button();
             EmpLbl = new Label();
-            label6 = new Label();
+            salaryLbl = new Label();
             label7 = new Label();
             label8 = new Label();
             btnDeleteToDepartment = new Button();
@@ -178,17 +178,18 @@
             EmpLbl.Text = "Employee";
             EmpLbl.Click += EmpLbl_Click;
             // 
-            // label6
+            // salaryLbl
             // 
-            label6.AutoSize = true;
-            label6.BackColor = SystemColors.ButtonFace;
-            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.ForeColor = SystemColors.ActiveCaption;
-            label6.Location = new Point(685, 112);
-            label6.Name = "label6";
-            label6.Size = new Size(52, 19);
-            label6.TabIndex = 49;
-            label6.Text = "Salary";
+            salaryLbl.AutoSize = true;
+            salaryLbl.BackColor = SystemColors.ButtonFace;
+            salaryLbl.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            salaryLbl.ForeColor = SystemColors.ActiveCaption;
+            salaryLbl.Location = new Point(685, 112);
+            salaryLbl.Name = "salaryLbl";
+            salaryLbl.Size = new Size(52, 19);
+            salaryLbl.TabIndex = 49;
+            salaryLbl.Text = "Salary";
+            salaryLbl.Click += salaryLbl_Click;
             // 
             // label7
             // 
@@ -234,7 +235,7 @@
             Controls.Add(btnDeleteToDepartment);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(label6);
+            Controls.Add(salaryLbl);
             Controls.Add(EmpLbl);
             Controls.Add(btnUpdateToDepartment);
             Controls.Add(btnAddToDepartment);
@@ -274,7 +275,7 @@
         private Button btnUpdateToDepartment;
         private Button btnAddToDepartment;
         private Label EmpLbl;
-        private Label label6;
+        private Label salaryLbl;
         private Label label7;
         private Label label8;
         private Button btnDeleteToDepartment;
