@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ namespace Management_System
     public partial class Employees : Form
     {
         Functions connectionFunc;
+        string stringConnection = "Data Source=localhost\\SqlExpress;Initial " +
+            "Catalog=ManagementSystem;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         public Employees()
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace Management_System
                 if (EmployeeNameTb.Text == "" || EmployeeGenderCb.SelectedIndex == -1
                     || EmployeeDepartmentCb.SelectedIndex == -1 || EmployeeSalaryTb.Text == "")
                 {
-                    MessageBox.Show("Department Name is required");
+                    MessageBox.Show("All fields are required.");
                 }
                 else
                 {
@@ -51,16 +54,34 @@ namespace Management_System
                     string joinDate = EmployeeJoinDateTp.Value.ToString("yyyy-MM-dd");
                     int salary = Convert.ToInt32(EmployeeSalaryTb.Text);
 
-                    string query = "INSERT INTO EmployeeTbl VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')";
-                    query = string.Format(query, employeeName, gender,
-                        departmentName, dateOfBirth, joinDate, salary); // Fixing the string formatting
-                    connectionFunc.SetData(query);
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = "INSERT INTO EmployeeTbl (EmpName, EmpGen, EmpDep, EmpDOB, EmpJDate, EmpSal) " +
+                            "VALUES (@EmpName, @EmpGen, @EmpDep, @EmpDOB, @EmpJDate, @EmpSal)";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@EmpName", employeeName);
+                            command.Parameters.AddWithValue("@EmpGen", gender);
+                            command.Parameters.AddWithValue("@EmpDep", departmentName);
+                            command.Parameters.AddWithValue("@EmpDOB", dateOfBirth);
+                            command.Parameters.AddWithValue("@EmpJDate", joinDate);
+                            command.Parameters.AddWithValue("@EmpSal", salary);
+
+                            connection.Open();
+                            command.ExecuteNonQuery(); // Execute the insert command
+                            connection.Close(); // Close the connection after executing the command
+                        }
+                    }
+
                     Employees_Load();
                     MessageBox.Show("Employee Added Successfully");
-                    EmployeeNameTb.Text = ""; // Clear the input field after adding
-                    EmployeeGenderCb.SelectedIndex = -1; // Clear the selection
-                    EmployeeDepartmentCb.SelectedIndex = -1; // Clear the selection
-                    EmployeeSalaryTb.Text = ""; // Clear the salary field
+
+                    // Clear the input fields after adding
+                    EmployeeNameTb.Text = "";
+                    EmployeeGenderCb.SelectedIndex = -1; 
+                    EmployeeDepartmentCb.SelectedIndex = -1; 
+                    EmployeeSalaryTb.Text = ""; 
 
                 }
             }
@@ -81,11 +102,23 @@ namespace Management_System
                 }
                 else
                 {
-                    string query = "DELETE FROM EmployeeTbl WHERE EmpId = {0}";
-                    query = string.Format(query, Key); // Fixing the string formatting
-                    connectionFunc.SetData(query);
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = "DELETE FROM EmployeeTbl WHERE EmpId = @EmpId";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@EmpId", Key);
+                            connection.Open();
+                            command.ExecuteNonQuery(); // Execute the delete command
+                            connection.Close(); // Close the connection after executing the command
+                        }
+                    }
+
+
                     Employees_Load();
                     MessageBox.Show("Employee Deleted Successfully");
+
                     EmployeeNameTb.Text = ""; // Clear the input field after adding
                     EmployeeGenderCb.SelectedIndex = -1; // Clear the selection
                     EmployeeDepartmentCb.SelectedIndex = -1; // Clear the selection
@@ -118,11 +151,33 @@ namespace Management_System
                     string joinDate = EmployeeJoinDateTp.Value.ToString("yyyy-MM-dd");
                     int salary = Convert.ToInt32(EmployeeSalaryTb.Text);
 
-                    string query = "UPDATE EmployeeTbl set VALUES EmpName = '{0}',EmpGen = '{1}'," +
-                        "EmpDep = '{2}',EmpDOB = '{3}',EmpJDate = '{4}',EmpSal = '{5}' WHERE EmpId = {6}";
-                    query = string.Format(query, employeeName, gender,
-                        departmentName, dateOfBirth, joinDate, salary, Key); // Fixing the string formatting
-                    connectionFunc.SetData(query);
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = @"UPDATE EmployeeTbl SET 
+                        EmpName = @EmpName,
+                        EmpGen = @EmpGen,
+                        EmpDep = @EmpDep,
+                        EmpDOB = @EmpDOB,
+                        EmpJDate = @EmpJDate,
+                        EmpSal = @EmpSal
+                        WHERE EmpId = @EmpId";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@EmpName", employeeName);
+                            command.Parameters.AddWithValue("@EmpGen", gender);
+                            command.Parameters.AddWithValue("@EmpDep", departmentName);
+                            command.Parameters.AddWithValue("@EmpDOB", dateOfBirth);
+                            command.Parameters.AddWithValue("@EmpJDate", joinDate);
+                            command.Parameters.AddWithValue("@EmpSal", salary);
+                            command.Parameters.AddWithValue("@EmpId", Key);
+
+                            connection.Open();
+                            command.ExecuteNonQuery(); // Execute the update command
+                            connection.Close(); // Close the connection after executing the command
+                        }
+                    }
+
                     Employees_Load();
                     MessageBox.Show("Employee Added Successfully");
                     EmployeeNameTb.Text = ""; // Clear the input field after adding

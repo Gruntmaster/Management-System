@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Departments));
             DepList = new DataGridView();
-            pictureBox1 = new PictureBox();
             panel2 = new Panel();
             label4 = new Label();
             panel1 = new Panel();
@@ -46,7 +44,6 @@
             label8 = new Label();
             btnDeleteToDepartment = new Button();
             ((System.ComponentModel.ISupportInitialize)DepList).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,15 +58,6 @@
             DepList.Size = new Size(812, 378);
             DepList.TabIndex = 44;
             DepList.CellContentClick += DepList_CellContentClick;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(151, 187);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(99, 81);
-            pictureBox1.TabIndex = 37;
-            pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -127,11 +115,11 @@
             label3.BackColor = SystemColors.ButtonFace;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 238);
             label3.ForeColor = SystemColors.ActiveCaption;
-            label3.Location = new Point(12, 237);
+            label3.Location = new Point(43, 238);
             label3.Name = "label3";
-            label3.Size = new Size(136, 21);
+            label3.Size = new Size(152, 21);
             label3.TabIndex = 27;
-            label3.Text = "Employee Name";
+            label3.Text = "Department Name";
             // 
             // label1
             // 
@@ -243,7 +231,6 @@
             Controls.Add(btnAddToDepartment);
             Controls.Add(label1);
             Controls.Add(DepList);
-            Controls.Add(pictureBox1);
             Controls.Add(panel2);
             Controls.Add(label4);
             Controls.Add(panel1);
@@ -256,7 +243,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Departments";
             ((System.ComponentModel.ISupportInitialize)DepList).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

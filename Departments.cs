@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Management_System
     public partial class Departments : Form
     {
         Functions connectionFunc;
+        string stringConnection = "Data Source=localhost\\SqlExpress;Initial " +
+            "Catalog=ManagementSystem;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         public Departments()
         {
             InitializeComponent();
@@ -36,9 +39,18 @@ namespace Management_System
                 else
                 {
                     string departmentName = DepartNameTb.Text;
-                    string query = "INSERT INTO DepartmentTbl VALUES ('{0}')";
-                    query = string.Format(query, departmentName); // Fixing the string formatting
-                    connectionFunc.SetData(query);
+
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = "INSERT INTO DepartmentTbl (DepName) VALUES (@DepName)";
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@DepName", departmentName);
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
                     Departments_Load();
                     MessageBox.Show("Department Added Successfully");
                     DepartNameTb.Text = ""; // Clear the input field after adding
@@ -81,12 +93,22 @@ namespace Management_System
                 else
                 {
                     string departmentName = DepartNameTb.Text;
-                    string query = "UPDATE DepartmentTbl set DepName = '{0}' WHERE DepId = {1}";
-                    query = string.Format(query, departmentName, Key); // Fixing the string formatting
-                    connectionFunc.SetData(query);
-                    Departments_Load();
-                    MessageBox.Show("Department Updated Successfully");
-                    DepartNameTb.Text = ""; // Clear the input field after adding
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = "UPDATE DepartmentTbl SET DepName = @DepName WHERE DepId = @DepId";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@DepName", departmentName);
+                            command.Parameters.AddWithValue("@DepId", Key); // Use the Key variable to specify the department ID
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                        }
+                        Departments_Load();
+                        MessageBox.Show("Department Updated Successfully");
+                        DepartNameTb.Text = ""; // Clear the input field after adding
+                    }
                 }
             }
             catch (Exception Ex)
@@ -106,9 +128,18 @@ namespace Management_System
                 }
                 else
                 {
-                    string query = "DELETE FROM DepartmentTbl WHERE DepId = {0}";
-                    query = string.Format(query, Key); // Fixing the string formatting
-                    connectionFunc.SetData(query);
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = "DELETE FROM DepartmentTbl WHERE DepId = @DepId";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@DepId", Key);
+                            connection.Open();
+                            command.ExecuteNonQuery(); // Execute the delete command
+                            connection.Close(); // Close the connection after executing the command
+                        }
+                    }
                     Departments_Load();
                     MessageBox.Show("Department Deleted Successfully");
                     DepartNameTb.Text = ""; // Clear the input field after adding

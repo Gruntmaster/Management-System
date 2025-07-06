@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Management_System
     public partial class Salaries : Form
     {
         Functions connectionFunc;
+        string stringConnection = "Data Source=localhost\\SqlExpress;Initial " +
+            "Catalog=ManagementSystem;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         public Salaries()
         {
             InitializeComponent();
@@ -92,13 +95,26 @@ namespace Management_System
                     int amount = daysSalary * Convert.ToInt32(daysAttendedTb.Text);
                     int daysAttended = Convert.ToInt32(daysAttendedTb.Text);
 
-                    string query = "INSERT INTO SalaryTbl VALUES ({0},{1},'{2}',{3},'{4}')";
-                    query = string.Format(query, employeeNameCb.SelectedValue.ToString(),
-                        daysAttended, period, amount, DateTime.Today.Date);
-                    connectionFunc.SetData(query);
-                    ShowSalaries();
-                    MessageBox.Show("Salary Paid!");
-                    daysAttendedTb.Text = ""; // Clear the input field after adding
+                    using (SqlConnection connection = new SqlConnection(stringConnection))
+                    {
+                        string query = "INSERT INTO SalaryTbl (Employee, Attendance, Period, Amount, PayDate) " +
+                                       "VALUES (@Employee, @Attendance, @Period, @Amount, @PayDate)";
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@Employee", employeeNameCb.SelectedValue);
+                            command.Parameters.AddWithValue("@Attendance", daysAttended);
+                            command.Parameters.AddWithValue("@Period", period);
+                            command.Parameters.AddWithValue("@Amount", amount);
+                            command.Parameters.AddWithValue("@PayDate", DateTime.Today.Date);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                        }
+                        ShowSalaries();
+                        MessageBox.Show("Salary Paid!");
+                        daysAttendedTb.Text = ""; // Clear the input field after adding
+                    }
                 }
             }
             catch (Exception ex)
